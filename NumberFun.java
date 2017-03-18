@@ -33,12 +33,12 @@ public class NumberFun
      */
     boolean isFile = false;
     int j = 1;
-    String exit = "exit";
     while(j == 1){
     while(isFile == false){
       System.out.print("Enter the name of the file (enter exit to exit)");
       String fileName = scan.next();
-      if(fileName == exit){
+      if(fileName == "exit"){
+        j = 0;
         break;
       }
       File file = new File(fileName);
