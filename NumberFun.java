@@ -28,98 +28,100 @@ public class NumberFun
      * Programmer's Credentials
      */
     printHeader();
-    /*
-     * User Input of File Name
-     */
+    
     boolean isFile = false;
     int j = 1;
     while(j == 1){
-    while(isFile == false){
-      System.out.print("Enter the name of the file (enter exit to exit)");
-      String fileName = scan.next();
-      System.out.println(fileName);
-      if(fileName == "exit"){
-        j = 0;
-        break;
-      }
-      File file = new File(fileName);
+      /*
+       * User input for file name
+       */ 
+         while(isFile == false){
+           System.out.print("Enter the name of the file (enter exit to exit)");
+           String fileName = scan.next();
+           if(fileName.equals("exit")){
+             System.exit(0);
+           }
+           File file = new File(fileName);
       
-        if(file.exists()){
-          inputFile = new Scanner(file);
-          isFile = true;
-        }
-    }
-    int even = 0;
-    int palindrome = 0;
-    int prime = 0;
-    int emirp = 0;
+           if(file.exists()){
+             inputFile = new Scanner(file);
+             isFile = true;
+           }
+         }
+         int even = 0;
+         int palindrome = 0;
+         int prime = 0;
+         int emirp = 0;
     /*
      * Loop to read in integers and check for commas
      */
-    while(inputFile.hasNext()){
-       int num = inputFile.nextInt();
-       if(num < 0){
-         System.out.print(num+" is not a valid input");
-         System.out.printf("%n%n");
-         break;
-       }
-       System.out.print(num+" ");
-       if(isEven(num)){
-         even = 1;
-       }
-       if(isPrime(num)){
-         prime = 1;
-       }
-       if(isPalindrome(num)){
-         palindrome = 1;
-       }
-       if(isEmirp(num)){
-         emirp = 1;
-       }
-       if(isEven(num)){
-         if(prime == 1 || palindrome == 1 || emirp == 1){
-           System.out.print("- even,");
-         }
-         else{
-           System.out.print("- even");
-         }  
-       }
-       if(isPrime(num)){
-         if(even == 0 && palindrome == 0 && emirp == 0){
-           System.out.print("- prime");
-         }
-         if(even == 1 && palindrome == 0 && emirp == 0){
-           System.out.print(", prime");
-         }
-         if(even == 0 && (palindrome == 1 || emirp == 1)){
-           System.out.print("- prime,");
-         }
-       }
-       if(isPalindrome(num)){
-         if(even == 0 && prime == 0 && emirp == 0){
-           System.out.print("- palindrome");
-         }
-         if((even == 1 || prime == 1) && emirp == 0){
-           System.out.print(" palindrome");
-         }
-         if((even == 1 || prime == 1) && emirp == 1){
-           System.out.print(" palindrome,");
-         }
-       }
-       if(isEmirp(num)){
-         if(even == 0 && prime == 0 && palindrome == 0){
-           System.out.print("- emirp");
-         }
-         if(even == 1 || prime == 1 || palindrome == 1){
-           System.out.print(" emirp");
-         }
-       }
-       System.out.printf("%n");
-       even = 0;
-       prime = 0;
-       palindrome = 0;
-       emirp = 0;
-       isFile = false;
+         while(inputFile.hasNext()){
+           int num = inputFile.nextInt();
+              if(num < 0){
+                System.out.print(num+" is not a valid input");
+                System.out.printf("%n%n");
+                break;
+              }
+           System.out.print(num+" ");
+              if(isEven(num)){
+                even = 1;
+              }
+              if(isPrime(num)){
+                prime = 1;
+              }
+              if(isPalindrome(num)){
+                palindrome = 1;
+              }
+              if(isEmirp(num)){
+                emirp = 1;
+              }
+              if(isEven(num)){
+                if(prime == 1 || palindrome == 1 || emirp == 1){
+                  System.out.print("- even,");
+                }
+                else{
+                  System.out.print("- even");
+                }  
+              }
+              if(isPrime(num)){
+                if(even == 0 && palindrome == 0 && emirp == 0){
+                  System.out.print("- prime");
+                }
+                if(even == 1 && palindrome == 0 && emirp == 0){
+                  System.out.print(", prime");
+                }
+                if(even == 0 && (palindrome == 1 || emirp == 1)){
+                  System.out.print("- prime,");
+                }
+                if(even == 1 && (palindrome == 1 || emirp == 1)){
+                  System.out.print(" prime,");
+                }
+              }
+              if(isPalindrome(num)){
+                if(even == 0 && prime == 0 && emirp == 0){
+                  System.out.print("- palindrome");
+                }
+                if((even == 1 || prime == 1) && emirp == 0){
+                  System.out.print(" palindrome");
+                }
+                if((even == 1 || prime == 1) && emirp == 1){
+                  System.out.print(" palindrome,");
+                }
+              }
+              if(isEmirp(num)){
+                if(even == 0 && prime == 0 && palindrome == 0){
+                  System.out.print("- emirp");
+                }
+                if(even == 1 || prime == 1 || palindrome == 1){
+                  System.out.print(" emirp");
+                }
+              }
+              System.out.printf("%n");
+              even = 0;
+              prime = 0;
+              palindrome = 0;
+              emirp = 0;
+              isFile = false;
     }
   }
      /*
@@ -143,7 +145,8 @@ public class NumberFun
       if(num < 2){
         return false;
       }
-      for(i = 2; i < num / 2; i++){
+     
+      for(i = 2; i < num; i++){
         if(num % i == 0){
           return false;
         }
