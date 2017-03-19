@@ -37,6 +37,7 @@ public class NumberFun
     while(isFile == false){
       System.out.print("Enter the name of the file (enter exit to exit)");
       String fileName = scan.next();
+      System.out.println(fileName);
       if(fileName == "exit"){
         j = 0;
         break;
