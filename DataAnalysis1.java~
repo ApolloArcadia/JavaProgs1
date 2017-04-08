@@ -14,7 +14,7 @@
  * 
  * Inputs: File Name (fileName)
  *
- * Output: Integers read plus whether they are even, prime, palindrome, and emirp
+ * Output: Integers read pluse whether they are even, prime, palindrome, and emirp
  *
  ***************************************************************************/
 import java.util.Scanner;
@@ -57,16 +57,12 @@ public class DataAnalysis
          int nums = 0;
          nums = monthNum(monthName);
          i = 0;
-         while(i < nums){
+         while(i < nums - 2){
            dayTemp[i] = inputFile.nextInt();
           // System.out.println(dayTemp[i]);
            sum += dayTemp[i];
            i++;
          }
-         /*dayTemp[nums - 2] = inputFile.nextInt();
-         sum += dayTemp[nums - 2];
-         dayTemp[nums - 1] = inputFile.nextInt();
-         sum += dayTemp[nums - 1];*/
          avg = sum / nums;
          i = 0;
          //int high = 0;
@@ -191,4 +187,3 @@ public class DataAnalysis
     }
   }
 }
-

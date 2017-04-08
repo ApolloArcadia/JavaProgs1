@@ -14,25 +14,23 @@
  * 
  * Inputs: File Name (fileName)
  *
- * Output: Integers read plus whether they are even, prime, palindrome, and emirp
+ * Output: Integers read pluse whether they are even, prime, palindrome, and emirp
  *
  ***************************************************************************/
 import java.util.Scanner;
 import java.io.*;
-public class DataAnalysis
+public class DataAnalysis1
 {
   public static void main(String[] args) throws IOException{
     Scanner scan = new Scanner(System.in);
     Scanner inputFile = null;
-    int dayTemp[] = new int[50];
-    char tempComp[] = new char[50];
     int i = 0;
     int sum = 0;
     double avg = 0;
     /*
      * Programmer's Credentials
      */
-    //printHeader();
+    printHeader();
     
     boolean isFile = false;
     //int j = 1;
@@ -56,17 +54,15 @@ public class DataAnalysis
          String monthName = inputFile.next();
          int nums = 0;
          nums = monthNum(monthName);
+         int dayTemp[] = new int[nums];
+         char tempComp[] = new char[nums];
          i = 0;
-         while(i < nums){
+         int count = 0;
+         while(inputFile.hasNextInt()){
            dayTemp[i] = inputFile.nextInt();
-          // System.out.println(dayTemp[i]);
            sum += dayTemp[i];
            i++;
          }
-         /*dayTemp[nums - 2] = inputFile.nextInt();
-         sum += dayTemp[nums - 2];
-         dayTemp[nums - 1] = inputFile.nextInt();
-         sum += dayTemp[nums - 1];*/
          avg = sum / nums;
          i = 0;
          //int high = 0;
@@ -74,6 +70,7 @@ public class DataAnalysis
          int k = 1;
          int m = 3;
          while(i < nums){
+           if((i + 2) < dayTemp.length){
            if(dayTemp[i] > avg){
              if(dayTemp[i + 1] > avg){
                if(dayTemp[i + 2] > avg){
@@ -82,13 +79,12 @@ public class DataAnalysis
                   tempComp[i + 2] = '+';
                  m = 3;
                  k = 1;
-                 if(k != 0){
+                 while(k != 0){
                    if(dayTemp[i + m] > avg){
                      tempComp[i + m] = '+';
                      m++;
                    }
                    else{
-                     i += m;
                      k = 0;
                    }
                  }
@@ -103,14 +99,14 @@ public class DataAnalysis
                   tempComp[i + 2] = '-';
                  m = 3;
                  k = 1;
-                 if(k != 0){
+                 while(k != 0){
                    if(dayTemp[i + m] < avg){
                      tempComp[i + m] = '-';
                      m++;
                    }
                    else{
-                     i += m;
                      k = 0;
+                   }
                    }
                  }
                }
@@ -118,11 +114,26 @@ public class DataAnalysis
            }
 
             // if(m == 3){
-               i++;  
+ 
             // }
-         }
+           else{
+             break;
+           }
+           i++;  
+           }
       i = 0;  
     System.out.printf("The average temperature for %s was %.2f%n", monthName, avg);
+    if(count != nums){
+      while(i < count){
+        if(i > 8){
+          System.out.println(i + 1+"       "+dayTemp[i]+tempComp[i]);
+        }
+        else{
+          System.out.println(i + 1+"        "+dayTemp[i]+tempComp[i]);
+        }
+        i++;
+      }
+    }
       while(i < nums){
         if(i > 8){
           System.out.println(i + 1+"       "+dayTemp[i]+tempComp[i]);
@@ -142,47 +153,47 @@ public class DataAnalysis
        i = 31;
        return i;
     }
-    if(monthName.equals("February")){
+    else if(monthName.equals("February")){
        i = 28;
        return i;
     }
-    if(monthName.equals("March")){
+    else if(monthName.equals("March")){
        i = 31;
        return i;
     } 
-    if(monthName.equals("April")){
+    else if(monthName.equals("April")){
        i = 30;
        return i;
     }
-    if(monthName.equals("May")){
+    else if(monthName.equals("May")){
        i = 31;
        return i;
     }  
-    if(monthName.equals("June")){
+    else if(monthName.equals("June")){
        i = 30;
        return i;
     }
-    if(monthName.equals("July")){
+    else if(monthName.equals("July")){
        i = 31;
        return i;
     } 
-    if(monthName.equals("August")){
+    else if(monthName.equals("August")){
        i = 31;
        return i;
     } 
-    if(monthName.equals("September")){
+    else if(monthName.equals("September")){
        i = 30;
        return i;
     }
-    if(monthName.equals("October")){
+    else if(monthName.equals("October")){
        i = 31;
        return i;
     }
-    if(monthName.equals("November")){
+    else if(monthName.equals("November")){
        i = 30;
        return i;
     }
-    if(monthName.equals("December")){
+    else if(monthName.equals("December")){
        i = 31;
        return i;
     }
@@ -190,5 +201,9 @@ public class DataAnalysis
       return 2;
     }
   }
+      public static void printHeader(){
+      System.out.println("Chris Hutchison");
+      System.out.println("CMSC 255 Spring 2017");
+      System.out.println("Project Number 4\n");
+    }
 }
-
